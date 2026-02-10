@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import SocialLinks from './SocialLinks';
+import { ThemeToggle } from './ThemeToggle';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -33,10 +34,10 @@ const Navbar: React.FC = () => {
     { title: 'About Me', path: '/about' },
   ];
 
-  // Site is now unified under Creative Dark theme
-  const textColor = 'text-white';
-  const textColorMuted = 'text-white/70';
-  const logoTextColor = 'text-white';
+  // Theme-aware colors
+  const textColor = 'text-foreground';
+  const textColorMuted = 'text-foreground/70';
+  const logoTextColor = 'text-foreground';
 
   return (
     <header
@@ -45,7 +46,7 @@ const Navbar: React.FC = () => {
     >
       <nav
         className={`flex justify-between items-center px-4 md:px-6 py-2 md:py-2.5 transition-all duration-500 ${scrolled
-          ? 'glass-morphism border-b border-white/10 shadow-lg'
+          ? 'glass-morphism border-b border-border/10 shadow-lg'
           : 'bg-transparent border-transparent'
           }`}
       >
@@ -79,74 +80,77 @@ const Navbar: React.FC = () => {
                   className="absolute bottom-0 left-3 right-3 h-0.5 bg-brand-green shadow-[0_0_10px_rgba(57,229,53,0.5)]"
                 />
               )}
-              <div className="absolute inset-0 bg-white/5 rounded-full scale-0 group-hover:scale-100 transition-transform duration-300 -z-10" />
+              <div className="absolute inset-0 bg-foreground/5 rounded-full scale-0 group-hover:scale-100 transition-transform duration-300 -z-10" />
             </Link>
           ))}
 
+          <div className="mx-2 flex items-center">
+            <ThemeToggle />
+          </div>
+
           <Link
             to="/contact"
-            className="ml-3 px-4 py-1.5 bg-brand-green text-black rounded-full text-[11px] font-bold shadow-[0_0_20px_rgba(57,229,53,0.2)] hover:shadow-[0_0_30px_rgba(57,229,53,0.4)] hover:scale-105 transition-all"
+            className="ml-2 px-4 py-2 bg-brand-green text-black rounded-full text-[11px] font-bold shadow-[0_0_20px_rgba(57,229,53,0.2)] hover:shadow-[0_0_30px_rgba(57,229,53,0.4)] hover:scale-105 transition-all"
           >
             HIRE ME
           </Link>
         </div>
 
-        {/* Artisan Bracket Menu Button */}
-        <button
-          onClick={toggleMenu}
-          className={`md:hidden p-2 rounded-lg ${textColor} transition-all relative z-[110] flex items-center justify-center group`}
-          aria-label="Toggle menu"
-        >
-          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-white/5 bg-white/[0.02] backdrop-blur-md group-hover:border-brand-green/30 transition-all">
-            <span className="text-[10px] font-black tracking-widest text-white/20 group-hover:text-brand-green transition-colors">
-              {isOpen ? 'CLOSE' : 'MENU'}
-            </span>
-            <div className="flex flex-col gap-1 items-end">
-              <motion.span
-                animate={isOpen ? { rotate: 45, y: 3, width: 12 } : { rotate: 0, y: 0, width: 12 }}
-                className="h-[1px] bg-white group-hover:bg-brand-green rounded-full transition-all"
-              />
-              <motion.span
-                animate={isOpen ? { rotate: -45, y: -3, width: 12 } : { rotate: 0, y: 0, width: 8 }}
-                className="h-[1px] bg-brand-green rounded-full transition-all"
-              />
+        {/* Mobile Menu Button */}
+        <div className="flex md:hidden items-center gap-2">
+          <ThemeToggle />
+          <button
+            onClick={toggleMenu}
+            className={`p-2 rounded-lg ${textColor} transition-all relative z-[110] flex items-center justify-center group`}
+            aria-label="Toggle menu"
+          >
+            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-foreground/5 bg-foreground/[0.02] backdrop-blur-md group-hover:border-brand-green/30 transition-all">
+              <span className="text-[10px] font-black tracking-widest text-foreground/20 group-hover:text-brand-green transition-colors">
+                {isOpen ? 'CLOSE' : 'MENU'}
+              </span>
+              <div className="flex flex-col gap-1 items-end">
+                <motion.span
+                  animate={isOpen ? { rotate: 45, y: 3, width: 12 } : { rotate: 0, y: 0, width: 12 }}
+                  className="h-[1px] bg-foreground group-hover:bg-brand-green rounded-full transition-all"
+                />
+                <motion.span
+                  animate={isOpen ? { rotate: -45, y: -3, width: 12 } : { rotate: 0, y: 0, width: 8 }}
+                  className="h-[1px] bg-brand-green rounded-full transition-all"
+                />
+              </div>
             </div>
-          </div>
-        </button>
+          </button>
+        </div>
       </nav>
 
-      {/* Artisan Lens Mobile Overlay V6 */}
+      {/* Mobile Overlay */}
       <AnimatePresence>
         {isOpen && (
           <>
-            {/* Dark Backdrop Blur */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={closeMenu}
-              className="fixed inset-0 bg-black/40 backdrop-blur-md z-[104] md:hidden"
+              className="fixed inset-0 bg-background/40 backdrop-blur-md z-[104] md:hidden"
             />
 
-            {/* Floating Glassmorphic Card */}
             <div className="fixed inset-0 flex items-center justify-center z-[105] pointer-events-none px-6 md:hidden">
               <motion.div
                 initial={{ scale: 0.9, opacity: 0, y: 20 }}
                 animate={{ scale: 1, opacity: 1, y: 0 }}
                 exit={{ scale: 0.9, opacity: 0, y: 20 }}
                 transition={{ type: "spring", damping: 25, stiffness: 300 }}
-                className="w-full max-w-[320px] h-auto min-h-[480px] bg-black/60 backdrop-blur-2xl rounded-[32px] border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] pointer-events-auto overflow-hidden relative flex flex-col"
+                className="w-full max-w-[320px] h-auto min-h-[480px] bg-background/60 backdrop-blur-2xl rounded-[32px] border border-foreground/10 shadow-[0_20px_50px_rgba(0,0,0,0.1)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.5)] pointer-events-auto overflow-hidden relative flex flex-col"
               >
-                {/* Internal Glows */}
                 <div className="absolute top-0 right-0 w-32 h-32 bg-brand-green/10 blur-[60px] rounded-full" />
-                <div className="absolute bottom-0 left-0 w-32 h-32 bg-white/5 blur-[60px] rounded-full" />
+                <div className="absolute bottom-0 left-0 w-32 h-32 bg-foreground/5 blur-[60px] rounded-full" />
 
                 <div className="flex-1 flex flex-col p-8 items-center text-center">
-                  <p className="text-white/20 text-[8px] font-black uppercase tracking-[0.8em] mb-12">Pathum Navigation</p>
+                  <p className="text-foreground/20 text-[8px] font-black uppercase tracking-[0.8em] mb-12">Pathum Navigation</p>
 
                   <div className="relative flex flex-col gap-8 w-full items-center">
-                    {/* The Logic Thread - Centered Vertical Line */}
-                    <div className="absolute left-1/2 -translate-x-1/2 top-2 bottom-2 w-[1px] bg-gradient-to-b from-white/0 via-brand-green/20 to-white/0" />
+                    <div className="absolute left-1/2 -translate-x-1/2 top-2 bottom-2 w-[1px] bg-gradient-to-b from-foreground/0 via-brand-green/20 to-foreground/0" />
 
                     {navLinks.map((link, i) => (
                       <motion.div
@@ -161,14 +165,14 @@ const Navbar: React.FC = () => {
                           onClick={closeMenu}
                           className="group flex flex-col items-center"
                         >
-                          <div className="w-2.5 h-2.5 rounded-full bg-black border border-white/20 group-hover:border-brand-green group-hover:scale-125 transition-all duration-300 relative z-20 bg-white/[0.02] flex items-center justify-center">
+                          <div className="w-2.5 h-2.5 rounded-full bg-background border border-foreground/20 group-hover:border-brand-green group-hover:scale-125 transition-all duration-300 relative z-20 flex items-center justify-center">
                             <motion.div
                               className="w-1 h-1 rounded-full bg-brand-green"
                               initial={{ scale: 0 }}
                               whileHover={{ scale: 1 }}
                             />
                           </div>
-                          <span className="text-xl font-bold text-white/50 group-hover:text-white transition-all duration-300 uppercase tracking-widest py-2">
+                          <span className="text-xl font-bold text-foreground/50 group-hover:text-foreground transition-all duration-300 uppercase tracking-widest py-2">
                             {link.title}
                           </span>
                         </Link>
@@ -176,9 +180,9 @@ const Navbar: React.FC = () => {
                     ))}
                   </div>
 
-                  <div className="mt-8 w-full pt-8 flex flex-col items-center gap-4 border-t border-white/5">
-                    <div className="w-8 h-[1px] bg-white/10" />
-                    <p className="text-[9px] font-bold text-white/20 uppercase tracking-[0.2em] italic">
+                  <div className="mt-8 w-full pt-8 flex flex-col items-center gap-4 border-t border-foreground/5">
+                    <div className="w-8 h-[1px] bg-foreground/10" />
+                    <p className="text-[9px] font-bold text-foreground/20 uppercase tracking-[0.2em] italic">
                       "Crafting Visual Legends"
                     </p>
                     <div className="pt-2">
@@ -191,7 +195,7 @@ const Navbar: React.FC = () => {
           </>
         )}
       </AnimatePresence>
-    </header >
+    </header>
   );
 };
 

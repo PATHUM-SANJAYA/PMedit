@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Facebook, Mail, Send, MessageSquare } from 'lucide-react';
+import { Facebook, Mail, Send } from 'lucide-react';
 
 interface SocialLinksProps {
   size?: 'small' | 'medium' | 'large';
@@ -53,7 +53,22 @@ const SocialLinks: React.FC<SocialLinksProps> = ({ size = 'medium' }) => {
     {
       name: 'WhatsApp',
       url: `https://wa.me/94725510768`,
-      icon: <MessageSquare size={iconSize[size]} />
+      icon: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width={iconSize[size]}
+          height={iconSize[size]}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="lucide lucide-message-circle"
+        >
+          <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" />
+        </svg>
+      )
     },
     {
       name: 'Email',

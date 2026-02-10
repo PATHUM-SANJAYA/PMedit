@@ -45,7 +45,7 @@ const Design: React.FC = () => {
     <Layout>
       <div className="relative pt-16 pb-8 overflow-hidden">
         {/* Background "CREATIVE" text */}
-        <div className="absolute top-[20%] left-1/2 -translate-x-1/2 text-[15vw] md:text-[20vw] font-black text-white/[0.02] pointer-events-none select-none z-0 tracking-tighter uppercase">
+        <div className="absolute top-[20%] left-1/2 -translate-x-1/2 text-[15vw] md:text-[20vw] font-black text-foreground/[0.02] pointer-events-none select-none z-0 tracking-tighter uppercase">
           Creative
         </div>
 
@@ -81,16 +81,16 @@ const Design: React.FC = () => {
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass-morphism border-white/5 mb-4"
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass-morphism border-foreground/5 mb-4"
             >
               <Sparkles size={12} className="text-brand-green" />
-              <span className="text-[9px] font-bold uppercase tracking-[0.3em] text-white/50">Showcasing Excellence</span>
+              <span className="text-[9px] font-bold uppercase tracking-[0.3em] text-foreground/50">Showcasing Excellence</span>
             </motion.div>
 
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="text-2xl md:text-3xl font-black text-white tracking-tighter mb-3"
+              className="text-2xl md:text-3xl font-black text-foreground tracking-tighter mb-3"
             >
               CREATIVE <span className="text-brand-gradient">ARCHIVE</span>
             </motion.h1>
@@ -99,7 +99,7 @@ const Design: React.FC = () => {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="text-white/40 text-xs md:text-sm max-w-lg mx-auto font-medium"
+              className="text-foreground/40 text-xs md:text-sm max-w-lg mx-auto font-medium"
             >
               A deeper look into my design methodology and the results I've delivered for clients globally.
             </motion.p>
@@ -115,8 +115,8 @@ const Design: React.FC = () => {
                 transition={{ delay: idx * 0.05 }}
                 onClick={() => setSelectedCategory(category.slug)}
                 className={`relative px-4 py-2 md:px-6 md:py-2.5 rounded-full text-[10px] md:text-[11px] font-black uppercase tracking-[0.2em] transition-all duration-500 overflow-hidden group ${selectedCategory === category.slug
-                  ? 'text-black'
-                  : 'text-white/40 hover:text-white'
+                  ? 'text-background'
+                  : 'text-foreground/40 hover:text-foreground'
                   }`}
               >
                 {/* Active Background */}
@@ -124,14 +124,14 @@ const Design: React.FC = () => {
                   {selectedCategory === category.slug && (
                     <motion.div
                       layoutId="activeCategory"
-                      className="absolute inset-0 bg-white shadow-[0_0_25px_rgba(255,255,255,0.3)] z-0"
+                      className="absolute inset-0 bg-foreground shadow-[0_0_25px_rgba(0,0,0,0.2)] dark:shadow-[0_0_25px_rgba(255,255,255,0.2)] z-0"
                       transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                     />
                   )}
                 </AnimatePresence>
 
                 {/* Hover Background - Subtle */}
-                <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity z-[-1]" />
+                <div className="absolute inset-0 bg-foreground/5 opacity-0 group-hover:opacity-100 transition-opacity z-[-1]" />
 
                 <span className="relative z-10">{category.title}</span>
               </motion.button>
@@ -147,12 +147,12 @@ const Design: React.FC = () => {
               exit={{ opacity: 0, y: -20 }}
               className="max-w-3xl mx-auto text-center mb-16 relative z-10"
             >
-              <h2 className="text-white text-xl md:text-2xl font-black mb-4 flex items-center justify-center gap-4 uppercase tracking-tighter">
+              <h2 className="text-foreground text-xl md:text-2xl font-black mb-4 flex items-center justify-center gap-4 uppercase tracking-tighter">
                 <span className="w-6 md:w-12 h-[2px] bg-brand-green/30" />
                 {currentCategory?.title}
                 <span className="w-6 md:w-12 h-[2px] bg-brand-green/30" />
               </h2>
-              <p className="text-white/40 text-xs md:text-base leading-relaxed font-medium">
+              <p className="text-foreground/40 text-xs md:text-base leading-relaxed font-medium">
                 {currentCategory?.description}
               </p>
             </motion.div>

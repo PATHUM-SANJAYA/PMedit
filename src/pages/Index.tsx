@@ -12,7 +12,7 @@ const Index = () => {
       {/* Hero Section - UNIFIED CREATIVE DARK THEME */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden py-12 md:py-0">
         {/* Background "PATHUM" text */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[15vw] md:text-[20vw] font-black text-white/[0.02] pointer-events-none select-none z-0 tracking-tighter uppercase">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[15vw] md:text-[20vw] font-black text-foreground/[0.02] pointer-events-none select-none z-0 tracking-tighter uppercase">
           Pathum
         </div>
 
@@ -33,14 +33,72 @@ const Index = () => {
         {/* Desktop Layout - Matching Reference Design */}
         <div className="hidden lg:block w-full h-screen relative">
 
-          {/* Premium Glass Circle - Lunar Glow */}
+          {/* Premium Glass Circle with Gaps at Arm Positions - SVG Implementation */}
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.8 }}
-            className="absolute left-[30%] top-[18%] -translate-x-1/2 -translate-y-1/2 w-[650px] h-[650px] xl:w-[750px] xl:h-[750px] bg-white/[0.03] rounded-full border border-white/10 shadow-[0_0_100px_rgba(255,255,255,0.05)]"
+            className="absolute left-[30%] top-[18%] -translate-x-1/2 -translate-y-1/2 w-[650px] h-[650px] xl:w-[750px] xl:h-[750px]"
             style={{ zIndex: 1 }}
-          />
+          >
+            {/* Background Glass Effect */}
+            <div className="absolute inset-0 bg-foreground/[0.03] rounded-full" />
+
+            {/* Green Circle with Gaps using SVG */}
+            <svg className="absolute inset-0 w-full h-full" viewBox="0 0 750 750">
+              <defs>
+                <filter id="greenGlow">
+                  <feGaussianBlur stdDeviation="8" result="coloredBlur" />
+                  <feMerge>
+                    <feMergeNode in="coloredBlur" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
+                </filter>
+              </defs>
+
+              {/* Green Circle with Gaps - Split into 4 arcs */}
+              {/* Top Arc (12 o'clock to 3 o'clock) */}
+              <path
+                d="M 375 12 A 363 363 0 0 1 738 375"
+                fill="none"
+                stroke="rgb(16, 185, 129)"
+                strokeWidth="12"
+                strokeLinecap="round"
+                filter="url(#greenGlow)"
+              />
+
+              {/* Right Arc - with gap at lower right arm (3 o'clock to ~4:30) */}
+              <path
+                d="M 738 375 A 363 363 0 0 1 620 640"
+                fill="none"
+                stroke="rgb(16, 185, 129)"
+                strokeWidth="12"
+                strokeLinecap="round"
+                filter="url(#greenGlow)"
+              />
+
+              {/* Bottom Arc - gap from ~4:30 to ~7:30 for arms */}
+              {/* Left side of bottom - gap at lower left arm (7:30 to 9 o'clock) */}
+              <path
+                d="M 130 640 A 363 363 0 0 1 12 375"
+                fill="none"
+                stroke="rgb(16, 185, 129)"
+                strokeWidth="12"
+                strokeLinecap="round"
+                filter="url(#greenGlow)"
+              />
+
+              {/* Left Arc (9 o'clock to 12 o'clock) */}
+              <path
+                d="M 12 375 A 363 363 0 0 1 375 12"
+                fill="none"
+                stroke="rgb(16, 185, 129)"
+                strokeWidth="12"
+                strokeLinecap="round"
+                filter="url(#greenGlow)"
+              />
+            </svg>
+          </motion.div>
 
           {/* Portrait Photo - REFINED HEIGHT */}
           <motion.div
@@ -62,10 +120,10 @@ const Index = () => {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="absolute right-[15%] top-1/2 -translate-y-1/2"
+            className="absolute right-[13%] top-[62%] -translate-y-1/2"
             style={{ zIndex: 3 }}
           >
-            <h1 className="text-[120px] xl:text-[150px] font-black text-white leading-[0.85] tracking-tight">
+            <h1 className="text-[120px] xl:text-[150px] font-black text-foreground leading-[0.85] tracking-tight">
               less is<br />
               <span className="font-black text-brand-gradient uppercase">more.</span>
             </h1>
@@ -75,7 +133,7 @@ const Index = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="absolute right-12 bottom-16 text-xs xl:text-sm font-black uppercase tracking-[0.4em] text-white/40"
+            className="absolute right-12 bottom-16 text-xs xl:text-sm font-black uppercase tracking-[0.4em] text-foreground/40"
             style={{ zIndex: 3 }}
           >
             Crafting Visual Legends
@@ -93,7 +151,7 @@ const Index = () => {
               href="https://www.facebook.com/PATHUMSANJAYA979/"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-brand-green/20 hover:border-brand-green hover:text-brand-green transition-all"
+              className="w-10 h-10 rounded-full bg-foreground/5 border border-foreground/10 flex items-center justify-center hover:bg-brand-green/20 hover:border-brand-green hover:text-brand-green transition-all"
               aria-label="Facebook"
             >
               <Facebook size={18} />
@@ -102,7 +160,7 @@ const Index = () => {
               href="https://www.tiktok.com/@pm_edit_973?is_from_webapp=1&sender_device=pc"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-brand-green/20 hover:border-brand-green hover:text-brand-green transition-all"
+              className="w-10 h-10 rounded-full bg-foreground/5 border border-foreground/10 flex items-center justify-center hover:bg-brand-green/20 hover:border-brand-green hover:text-brand-green transition-all"
               aria-label="TikTok"
             >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -113,7 +171,7 @@ const Index = () => {
               href="https://t.me/+94725510768"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-brand-green/20 hover:border-brand-green hover:text-brand-green transition-all"
+              className="w-10 h-10 rounded-full bg-foreground/5 border border-foreground/10 flex items-center justify-center hover:bg-brand-green/20 hover:border-brand-green hover:text-brand-green transition-all"
               aria-label="Telegram"
             >
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -124,10 +182,12 @@ const Index = () => {
               href="https://wa.me/94725510768"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-brand-green/20 hover:border-brand-green hover:text-brand-green transition-all"
+              className="w-10 h-10 rounded-full bg-foreground/5 border border-foreground/10 flex items-center justify-center hover:bg-brand-green/20 hover:border-brand-green hover:text-brand-green transition-all"
               aria-label="WhatsApp"
             >
-              <MessageCircle size={18} />
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-message-circle">
+                <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" />
+              </svg>
             </a>
           </motion.div>
         </div>
@@ -171,9 +231,9 @@ const Index = () => {
               animate={{ opacity: 1, y: 0 }}
               className="absolute -top-12 left-1/2 -translate-x-1/2 z-30"
             >
-              <div className="flex items-center gap-2 px-3 py-1 rounded-full border border-white/5 bg-white/[0.02] backdrop-blur-md">
+              <div className="flex items-center gap-2 px-3 py-1 rounded-full border border-foreground/5 bg-foreground/[0.02] backdrop-blur-md">
                 <div className="w-1 h-1 rounded-full bg-brand-green animate-pulse" />
-                <span className="text-[8px] font-black uppercase tracking-[0.4em] text-white/40">Design by Pathum</span>
+                <span className="text-[8px] font-black uppercase tracking-[0.4em] text-foreground/40">Design by Pathum</span>
               </div>
             </motion.div>
 
@@ -192,17 +252,17 @@ const Index = () => {
               }}
               className="relative p-3 group"
             >
-              {/* Outer Lens Glow */}
-              <div className="absolute inset-0 rounded-full border border-white/10 shadow-[0_0_50px_rgba(255,255,255,0.05)] opacity-50 group-hover:opacity-100 transition-opacity" />
+              {/* Outer Lens Glow with STRONG GREEN MARGIN LINE */}
+              <div className="absolute inset-0 rounded-full border-[6px] border-brand-green shadow-[0_0_40px_rgba(16,185,129,0.3)] opacity-80 group-hover:opacity-100 transition-opacity" />
 
-              <div className="relative rounded-full overflow-hidden border-[1px] border-white/20 p-1.5 shadow-2xl">
-                <div className="relative rounded-full overflow-hidden border-[1px] border-white/5 bg-black/40 backdrop-blur-md">
+              <div className="relative rounded-full overflow-hidden border-[1px] border-foreground/20 p-1.5 shadow-2xl">
+                <div className="relative rounded-full overflow-hidden border-[1px] border-foreground/5 bg-background/40 backdrop-blur-md">
                   <img
                     src="/pathum-portrait.jpg"
                     alt="Pathum Sanjaya"
                     className="w-[280px] h-[340px] md:w-[420px] md:h-[500px] object-contain object-bottom scale-[1.05]"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent" />
                 </div>
               </div>
 
@@ -220,12 +280,12 @@ const Index = () => {
               className="relative group py-8 px-4"
             >
               {/* Subtle Glass Background for Text */}
-              <div className="absolute inset-0 bg-white/[0.01] backdrop-blur-[2px] rounded-[3rem] border border-white/[0.03] scale-110 pointer-events-none" />
+              <div className="absolute inset-0 bg-foreground/[0.01] backdrop-blur-[2px] rounded-[3rem] border border-foreground/[0.03] scale-110 pointer-events-none" />
 
               <div className="relative space-y-3">
                 <h1 className="text-[68px] md:text-[96px] font-black leading-[0.75] tracking-tighter uppercase flex flex-col items-center">
-                  <span className="text-[28px] md:text-[40px] font-light lowercase italic text-white/30 tracking-widest mb-2 font-serif">less is</span>
-                  <span className="text-white drop-shadow-[0_0_30px_rgba(255,255,255,0.1)]">more.</span>
+                  <span className="text-[28px] md:text-[40px] font-light lowercase italic text-foreground/30 tracking-widest mb-2 font-serif">less is</span>
+                  <span className="text-foreground dark:drop-shadow-[0_0_30px_rgba(255,255,255,0.1)]">more.</span>
                 </h1>
 
                 <div className="flex flex-col items-center gap-5 pt-8">
@@ -233,7 +293,7 @@ const Index = () => {
                     animate={{ width: [0, 48] }}
                     className="h-[2px] bg-brand-gradient"
                   />
-                  <p className="text-[10px] md:text-sm font-black uppercase tracking-[0.5em] text-white/30">
+                  <p className="text-[10px] md:text-sm font-black uppercase tracking-[0.5em] text-foreground/30">
                     Crafting Visual Legends
                   </p>
 
@@ -250,16 +310,16 @@ const Index = () => {
       </section>
 
       {/* Featured Works Section - NEW */}
-      <section className="py-24 relative z-10 bg-[#050505]">
+      <section className="py-24 relative z-10 bg-background/50 dark:bg-[#050505]">
         <div className="container-custom">
           <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
             <div className="max-w-xl">
               <span className="text-brand-green text-xs font-bold uppercase tracking-[0.3em] mb-4 block">Selected Works</span>
-              <h2 className="text-3xl md:text-5xl font-black text-white tracking-tighter leading-none">
+              <h2 className="text-3xl md:text-5xl font-black text-foreground tracking-tighter leading-none">
                 CRAFTING <span className="text-brand-gradient">LEGENDARY</span> VISUALS
               </h2>
             </div>
-            <Link to="/design" className="group flex items-center gap-3 text-white/60 hover:text-white transition-colors font-black text-xs uppercase tracking-widest bg-white/5 px-6 py-3 rounded-full border border-white/10">
+            <Link to="/design" className="group flex items-center gap-3 text-foreground/60 hover:text-foreground transition-colors font-black text-xs uppercase tracking-widest bg-foreground/5 px-6 py-3 rounded-full border border-foreground/10">
               VIEW ALL PROJECTS <ArrowUpRight size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
             </Link>
           </div>
@@ -284,7 +344,7 @@ const Index = () => {
               className="group relative aspect-[16/10] rounded-[2.5rem] overflow-hidden border border-white/10"
             >
               <img src="/portfolio/logo-designs/logo-1.jpg" alt="Featured Project" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
               <div className="absolute bottom-10 left-10">
                 <p className="text-brand-green text-[10px] font-bold uppercase tracking-widest mb-2">Logo Design</p>
                 <h3 className="text-2xl font-black text-white uppercase tracking-tighter">Modern Brand Identity</h3>
@@ -298,8 +358,8 @@ const Index = () => {
       <section className="py-24 relative z-10">
         <div className="container-custom">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-black text-white tracking-tighter uppercase">My <span className="text-brand-gradient">Expertise</span></h2>
-            <p className="text-white/40 text-sm md:text-base max-w-lg mx-auto mt-4 font-medium uppercase tracking-widest italic">Specialized solutions for global visionaries.</p>
+            <h2 className="text-4xl md:text-5xl font-black text-foreground tracking-tighter uppercase">My <span className="text-brand-gradient">Expertise</span></h2>
+            <p className="text-foreground/40 text-sm md:text-base max-w-lg mx-auto mt-4 font-medium uppercase tracking-widest italic">Specialized solutions for global visionaries.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -310,15 +370,15 @@ const Index = () => {
             ].map((service, i) => (
               <motion.div
                 key={i}
-                whileHover={{ y: -5, backgroundColor: "rgba(255,255,255,0.03)" }}
-                className="p-10 rounded-[2rem] border border-white/5 glass-morphism space-y-6 group"
+                whileHover={{ y: -5, backgroundColor: "rgba(var(--foreground), 0.03)" }}
+                className="p-10 rounded-[2rem] border border-foreground/5 glass-morphism space-y-6 group"
               >
                 <div className="w-14 h-14 rounded-2xl bg-brand-green/10 flex items-center justify-center text-brand-green group-hover:scale-110 transition-transform shadow-[0_0_30px_rgba(57,229,53,0.1)]">
                   {service.icon}
                 </div>
                 <div>
-                  <h3 className="text-xl font-black text-white mb-3 uppercase tracking-widest">{service.title}</h3>
-                  <p className="text-white/40 text-sm leading-relaxed font-medium">{service.desc}</p>
+                  <h3 className="text-xl font-black text-foreground mb-3 uppercase tracking-widest">{service.title}</h3>
+                  <p className="text-foreground/40 text-sm leading-relaxed font-medium">{service.desc}</p>
                 </div>
               </motion.div>
             ))}

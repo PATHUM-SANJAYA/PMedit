@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Facebook, Send, Mail, MessageSquare, Heart, ArrowUpRight, Globe, ShieldCheck } from 'lucide-react';
+import { Facebook, Send, Mail, Heart, ArrowUpRight, Globe, ShieldCheck } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const Footer: React.FC = () => {
@@ -18,7 +18,15 @@ const Footer: React.FC = () => {
             )
         },
         { name: 'Telegram', url: 'https://t.me/+94725510768', icon: <Send size={16} /> },
-        { name: 'WhatsApp', url: 'https://wa.me/94725510768', icon: <MessageSquare size={16} /> },
+        {
+            name: 'WhatsApp',
+            url: 'https://wa.me/94725510768',
+            icon: (
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" />
+                </svg>
+            )
+        },
     ];
 
     const footerLinks = [
@@ -43,7 +51,7 @@ const Footer: React.FC = () => {
     ];
 
     return (
-        <footer className="relative pt-1.5 md:pt-8 pb-1 md:pb-6 overflow-hidden bg-black border-t border-white/5">
+        <footer className="relative pt-1.5 md:pt-8 pb-1 md:pb-6 overflow-hidden bg-background border-t border-foreground/5">
             {/* Background elements */}
             <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] md:w-[1000px] h-[150px] md:h-[300px] bg-brand-green/5 blur-[100px] md:blur-[150px] -z-10 rounded-full" />
 
@@ -52,11 +60,11 @@ const Footer: React.FC = () => {
                     {/* Brand Section */}
                     <div className="col-span-2 md:col-span-4 space-y-1.5 md:space-y-6">
                         <Link to="/" className="inline-block group">
-                            <span className="text-sm md:text-xl font-black text-white tracking-tighter group-hover:text-brand-green transition-colors">
+                            <span className="text-sm md:text-xl font-black text-foreground transition-colors">
                                 PM EDIT<span className="text-brand-green">.</span>
                             </span>
                         </Link>
-                        <p className="hidden md:block text-white/40 text-[10px] md:text-xs leading-relaxed max-w-xs font-medium uppercase tracking-[0.2em]">
+                        <p className="hidden md:block text-foreground/40 text-[10px] md:text-xs leading-relaxed max-w-xs font-medium uppercase tracking-[0.2em]">
                             Crafting Visual Legends<span className="text-brand-green">.</span>
                         </p>
                         <div className="flex gap-3">
@@ -66,7 +74,7 @@ const Footer: React.FC = () => {
                                     href={social.url}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="w-4 h-4 md:w-8 md:h-8 rounded-full border border-white/10 flex items-center justify-center text-white/60 hover:border-brand-green hover:text-brand-green transition-all"
+                                    className="w-4 h-4 md:w-8 md:h-8 rounded-full border border-foreground/10 flex items-center justify-center text-foreground/60 hover:border-brand-green hover:text-brand-green transition-all"
                                     whileHover={{ y: -3, scale: 1.05 }}
                                     aria-label={social.name}
                                 >
@@ -79,13 +87,13 @@ const Footer: React.FC = () => {
                     {/* Nav Links */}
                     {footerLinks.map((column, idx) => (
                         <div key={idx} className="col-span-1 md:col-span-2 space-y-1 md:space-y-6">
-                            <h3 className="hidden md:block text-[9px] font-bold uppercase tracking-[0.3em] text-white/30">{column.title}</h3>
+                            <h3 className="hidden md:block text-[9px] font-bold uppercase tracking-[0.3em] text-foreground/30">{column.title}</h3>
                             <ul className="space-y-1.5 md:space-y-3">
                                 {column.links.map((link) => (
                                     <li key={link.name}>
                                         <Link
                                             to={link.path}
-                                            className="text-white/60 hover:text-brand-green text-[7.5px] md:text-[11px] font-bold transition-colors flex items-center group gap-1"
+                                            className="text-foreground/60 hover:text-brand-green text-[7.5px] md:text-[11px] font-bold transition-colors flex items-center group gap-1"
                                         >
                                             {link.name}
                                             <ArrowUpRight size={12} className="opacity-0 -translate-y-1 translate-x-1 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all" />
@@ -98,15 +106,15 @@ const Footer: React.FC = () => {
 
                     {/* Contact Section */}
                     <div className="col-span-2 md:col-span-4 space-y-1 md:space-y-6">
-                        <h3 className="hidden md:block text-[9px] font-bold uppercase tracking-[0.3em] text-white/30">GET IN TOUCH</h3>
+                        <h3 className="hidden md:block text-[9px] font-bold uppercase tracking-[0.3em] text-foreground/30">GET IN TOUCH</h3>
                         <div className="flex flex-row flex-wrap gap-3 md:gap-12">
                             <a href="mailto:graphicdesigninglk@gmail.com" className="block group">
-                                <p className="hidden md:block text-white/30 text-[9px] font-bold uppercase mb-1">Email</p>
-                                <p className="text-white text-[7.5px] md:text-xs font-bold group-hover:text-brand-green transition-colors">graphicdesigninglk@gmail.com</p>
+                                <p className="hidden md:block text-foreground/30 text-[9px] font-bold uppercase mb-1">Email</p>
+                                <p className="text-foreground text-[7.5px] md:text-xs font-bold group-hover:text-brand-green transition-colors">graphicdesigninglk@gmail.com</p>
                             </a>
                             <div className="block">
-                                <p className="hidden md:block text-white/30 text-[9px] font-bold uppercase mb-1">Based In</p>
-                                <p className="text-white text-[7.5px] md:text-xs font-bold flex items-center gap-1">
+                                <p className="hidden md:block text-foreground/30 text-[9px] font-bold uppercase mb-1">Based In</p>
+                                <p className="text-foreground text-[7.5px] md:text-xs font-bold flex items-center gap-1">
                                     Sri Lanka <Globe size={12} className="text-brand-green" />
                                 </p>
                             </div>
