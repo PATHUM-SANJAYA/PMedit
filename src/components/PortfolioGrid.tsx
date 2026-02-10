@@ -12,25 +12,11 @@ const PortfolioGrid: React.FC<PortfolioGridProps> = ({ items }) => {
   const [loadedImages, setLoadedImages] = useState<Record<string, boolean>>({});
   const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({});
 
-  // Preload all images immediately
+  // Handle image load states
   useEffect(() => {
     // Reset states when items change
     setLoadedImages({});
     setImageErrors({});
-
-    // Preload all images at once
-    items.forEach(item => {
-      const img = new Image();
-      img.src = item.imageUrl;
-
-      img.onload = () => {
-        setLoadedImages(prev => ({ ...prev, [item.id]: true }));
-      };
-
-      img.onerror = () => {
-        setImageErrors(prev => ({ ...prev, [item.id]: true }));
-      };
-    });
   }, [items]);
 
   // Memoize the grid items

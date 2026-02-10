@@ -111,7 +111,8 @@ const Index = () => {
             <img
               src="/pathum-portrait.jpg"
               alt="Pathum Sanjaya"
-              className="w-full h-full object-contain object-center"
+              className="w-full h-full object-contain object-center outline-none"
+              fetchPriority="high"
             />
           </motion.div>
 
@@ -261,6 +262,7 @@ const Index = () => {
                     src="/pathum-portrait.jpg"
                     alt="Pathum Sanjaya"
                     className="w-[280px] h-[340px] md:w-[420px] md:h-[500px] object-contain object-bottom scale-[1.05]"
+                    fetchPriority="high"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent" />
                 </div>
