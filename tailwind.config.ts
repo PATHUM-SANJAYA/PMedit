@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import tailwindcssAnimate from "tailwindcss-animate";
 
 export default {
 	darkMode: ["class"],
@@ -68,7 +69,7 @@ export default {
 					light: '#F9F9F9'
 				},
 				'brand-green': '#10B981',
-				'secondary': '#F3F4F6',
+
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -93,46 +94,34 @@ export default {
 					'100%': { opacity: '1' }
 				},
 				'fade-up': {
-					'0%': { 
+					'0%': {
 						opacity: '0',
 						transform: 'translateY(20px)'
 					},
-					'100%': { 
+					'100%': {
 						opacity: '1',
 						transform: 'translateY(0)'
 					}
 				},
 				'slide-in-right': {
-					'0%': { 
+					'0%': {
 						transform: 'translateX(100%)',
 						opacity: '0'
 					},
-					'100%': { 
+					'100%': {
 						transform: 'translateX(0)',
 						opacity: '1'
 					}
 				},
 				'slide-in-left': {
-					'0%': { 
+					'0%': {
 						transform: 'translateX(-100%)',
 						opacity: '0'
 					},
-					'100%': { 
+					'100%': {
 						transform: 'translateX(0)',
 						opacity: '1'
 					}
-				},
-				fadeUp: {
-					'0%': { opacity: '0', transform: 'translateY(20px)' },
-					'100%': { opacity: '1', transform: 'translateY(0)' },
-				},
-				slideInRight: {
-					'0%': { opacity: '0', transform: 'translateX(20px)' },
-					'100%': { opacity: '1', transform: 'translateX(0)' },
-				},
-				moveInCircle: {
-					'0%': { transform: 'rotate(0deg) translateX(50px) rotate(0deg)' },
-					'100%': { transform: 'rotate(360deg) translateX(50px) rotate(-360deg)' },
 				},
 			},
 			animation: {
@@ -143,10 +132,8 @@ export default {
 				'slide-in-right': 'slide-in-right 0.6s ease-out',
 				'slide-in-left': 'slide-in-left 0.6s ease-out',
 				'spin-slow': 'spin 15s linear infinite',
-				'fade-up': 'fadeUp 0.5s ease-out',
-				'slide-in-right': 'slideInRight 0.5s ease-out',
 			}
 		}
 	},
-	plugins: [require("tailwindcss-animate")],
+	plugins: [tailwindcssAnimate],
 } satisfies Config;

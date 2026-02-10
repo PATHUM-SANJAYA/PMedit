@@ -22,11 +22,11 @@ const PortfolioGrid: React.FC<PortfolioGridProps> = ({ items }) => {
     items.forEach(item => {
       const img = new Image();
       img.src = item.imageUrl;
-      
+
       img.onload = () => {
         setLoadedImages(prev => ({ ...prev, [item.id]: true }));
       };
-      
+
       img.onerror = () => {
         setImageErrors(prev => ({ ...prev, [item.id]: true }));
       };
@@ -35,29 +35,23 @@ const PortfolioGrid: React.FC<PortfolioGridProps> = ({ items }) => {
 
   // Memoize the grid items
   const gridItems = useMemo(() => (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 items-start">
       {items.map((item, index) => (
         <motion.div
           key={item.id}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.2 }}
-          className="group relative aspect-square overflow-hidden rounded-xl bg-gray-100 cursor-pointer"
+          layout
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.9 }}
+          transition={{ duration: 0.5, delay: index * 0.05 }}
+          className={`group relative overflow-hidden rounded-3xl bg-white/[0.03] border border-white/5 cursor-pointer shadow-2xl transition-all duration-500 hover:border-brand-green/30 hover:shadow-[0_0_40px_rgba(57,229,53,0.1)] ${index % 3 === 0 ? 'aspect-[4/5]' : index % 3 === 1 ? 'aspect-[3/4] md:mt-12' : 'aspect-[4/5]'
+            }`}
           onClick={() => setSelectedItem(item)}
         >
           {/* Loading Placeholder */}
           {!loadedImages[item.id] && !imageErrors[item.id] && (
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-brand-green"></div>
-            </div>
-          )}
-
-          {/* Error Placeholder */}
-          {imageErrors[item.id] && (
-            <div className="absolute inset-0 flex flex-col items-center justify-center text-gray-400">
-              <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-              </svg>
+            <div className="absolute inset-0 flex items-center justify-center bg-black/20">
+              <div className="w-8 h-8 border-2 border-brand-green/20 border-t-brand-green rounded-full animate-spin" />
             </div>
           )}
 
@@ -65,30 +59,45 @@ const PortfolioGrid: React.FC<PortfolioGridProps> = ({ items }) => {
           <img
             src={item.imageUrl}
             alt={item.title}
-            className={`h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-110 ${
-              !loadedImages[item.id] ? 'opacity-0' : 'opacity-100'
-            }`}
+            className={`h-full w-full object-cover transition-all duration-1000 ease-out group-hover:scale-110 ${!loadedImages[item.id] ? 'opacity-0 scale-95' : 'opacity-100 scale-100'
+              }`}
             onError={() => setImageErrors(prev => ({ ...prev, [item.id]: true }))}
             onLoad={() => setLoadedImages(prev => ({ ...prev, [item.id]: true }))}
-            loading="eager"
+            loading="lazy"
             decoding="async"
           />
 
-          {/* Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
-              <h3 className="text-lg font-bold">{item.title}</h3>
+          {/* Overlay - Modern Glassmorphism */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-700 flex flex-col justify-end p-6 md:p-8 backdrop-blur-[3px]">
+            <motion.div
+              initial={{ y: 30, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.5 }}
+              className="transform translate-y-6 group-hover:translate-y-0 transition-all duration-700"
+            >
+              <div className="flex items-center gap-2 mb-3">
+                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-brand-green bg-brand-green/20 px-3 py-1 rounded-full border border-brand-green/30">
+                  {item.year || '2024'}
+                </span>
+                <span className="w-8 h-[1px] bg-white/20" />
+              </div>
+
+              <h3 className="text-xl md:text-2xl font-black text-white mb-3 tracking-tighter uppercase leading-none">{item.title}</h3>
+
               {item.tags && (
-                <div className="mt-2 flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-100">
                   {item.tags.map(tag => (
-                    <span key={tag} className="text-xs bg-white/20 px-2 py-1 rounded-full">
-                      {tag}
+                    <span key={tag} className="text-[9px] font-bold uppercase tracking-widest text-white/60">
+                      #{tag}
                     </span>
                   ))}
                 </div>
               )}
-            </div>
+            </motion.div>
           </div>
+
+          {/* Hover Glow Corner */}
+          <div className="absolute top-0 right-0 w-24 h-24 bg-brand-green/10 blur-[40px] opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
         </motion.div>
       ))}
     </div>

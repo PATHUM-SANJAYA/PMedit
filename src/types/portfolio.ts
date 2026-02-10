@@ -2,6 +2,9 @@ export interface PortfolioItem {
   id: string;
   title: string;
   description?: string;
+  logic?: string;
+  client?: string;
+  year?: string;
   imageUrl: string;
   category: 'logo-designs' | 'facebook-posts' | 'banners' | 'content';
   tags?: string[];
@@ -35,7 +38,7 @@ export const categories: PortfolioCategory[] = [
   },
   {
     id: 'content',
-    title: 'Content',
+    title: 'Design',
     slug: 'content',
     description: 'Various content designs including graphics, illustrations, and marketing materials.'
   }
