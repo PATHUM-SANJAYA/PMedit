@@ -1,69 +1,90 @@
-# Welcome to your Lovable project
+# PM EDIT | Creative Portfolio
 
-## Project info
+![Project Banner](https://komarev.com/ghpvc/?username=pathum-sanjaya&label=Profile%20views&color=0e75b6&style=flat)
 
-**URL**: https://lovable.dev/projects/8d6a1122-3f0a-4d16-8112-1c3f8e88bec7
+Welcome to the official repository for **PM EDIT**, a high-end, modern portfolio website for a multidisciplinary creative director. The site leverages a "Creative Dark" aesthetic, emphasizing bold typography, vibrant accent colors, and sophisticated animations.
 
-## How can I edit this code?
+---
 
-There are several ways of editing your application.
+## ✨ Key Features
 
-**Use Lovable**
+- 🌑 **Premium Dark Aesthetic**: Custom glassmorphism and bento-style layouts.
+- 🚀 **Performant Animations**: Powered by Framer Motion for smooth, cinematic transitions.
+- 📱 **Mobile-First Design**: Meticulously crafted responsive experience across all devices.
+- 🎨 **Dynamic Portfolio**: Filterable archive of design works including logos, banners, and social media content.
+- 📬 **Direct Engagement**: Optimized contact system for streamlined client inquiries.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/8d6a1122-3f0a-4d16-8112-1c3f8e88bec7) and start prompting.
+---
 
-Changes made via Lovable will be committed automatically to this repo.
+## 🛠️ Technology Stack
 
-**Use your preferred IDE**
+- **Framework**: [React 18](https://reactjs.org/) + [TypeScript](https://www.typescriptlang.org/)
+- **Build Tool**: [Vite](https://vitejs.dev/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/) + [Shadcn UI](https://ui.shadcn.com/)
+- **Motion**: [Framer Motion](https://www.framer.com/motion/)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Deployment**: [Netlify](https://www.netlify.com/)
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+---
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## 🚀 Getting Started
 
-Follow these steps:
+To run this project locally, follow these steps:
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### Prerequisites
+- Node.js & npm installed on your machine.
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+### Installation
+1. **Clone the repository**:
+   ```sh
+   git clone https://github.com/pathum-sanjaya/design-link-express.git
+   ```
 
-# Step 3: Install the necessary dependencies.
-npm i
+2. **Navigate to the project directory**:
+   ```sh
+   cd design-link-express
+   ```
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+3. **Install dependencies**:
+   ```sh
+   npm install
+   ```
 
-**Edit a file directly in GitHub**
+4. **Start the development server**:
+   ```sh
+   npm run dev
+   ```
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+---
 
-**Use GitHub Codespaces**
+## 🤝 Connect With Me
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+<h3 align="left">I'm Pathum Sanjaya 👋</h3>
+<p align="left">I'm a multidisciplinary creative director and designer, eager to learn and explore new technologies and work with them.</p>
 
-## What technologies are used for this project?
+<p align="left">
+<a href="https://www.linkedin.com/in/pathum-sanjaya-b86155367/" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="LinkedIn" height="30" width="40" /></a>
+<a href="https://web.facebook.com/pathumsanjaya979/" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/facebook.svg" alt="Facebook" height="30" width="40" /></a>
+</p>
 
-This project is built with .
+- 👨‍💻 **Portfolio**: [https://pathum-sanjaya.github.io/info/](https://pathum-sanjaya.github.io/info/)
+- 📫 **Email**: [graphicdesigninglk@gmail.com](mailto:graphicdesigninglk@gmail.com)
+- ⚡ **Fun fact**: I'm also deeply interested in cybersecurity and emerging tech.
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+---
 
-## How can I deploy this project?
+## 🛠️ Tools & Expertise
 
-Simply open [Lovable](https://lovable.dev/projects/8d6a1122-3f0a-4d16-8112-1c3f8e88bec7) and click on Share -> Publish.
+<p align="left"> 
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" alt="react" width="40" height="40"/>
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg" alt="html5" width="40" height="40"/>
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" alt="css3" width="40" height="40"/>
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original-wordmark.svg" alt="nodejs" width="40" height="40"/>
+<img src="https://www.vectorlogo.zone/logos/adobe_illustrator/adobe_illustrator-icon.svg" alt="illustrator" width="40" height="40"/>
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/photoshop/photoshop-line.svg" alt="photoshop" width="40" height="40"/>
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="python" width="40" height="40"/>
+<img src="https://www.vectorlogo.zone/logos/firebase/firebase-icon.svg" alt="firebase" width="40" height="40"/>
+</p>
 
-## I want to use a custom domain - is that possible?
+<p><img align="center" src="https://github-readme-stats.vercel.app/api/top-langs?username=pathum-sanjaya&show_icons=true&locale=en&layout=compact" alt="Top Languages" /></p>
 
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
