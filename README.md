@@ -25,37 +25,6 @@ Welcome to the official repository for **PM EDIT**, a high-end, modern portfolio
 - **Icons**: [Lucide React](https://lucide.dev/)
 - **Deployment**: [Netlify](https://www.netlify.com/)
 
----
-
-## 🚀 Getting Started
-
-To run this project locally, follow these steps:
-
-### Prerequisites
-- Node.js & npm installed on your machine.
-
-### Installation
-1. **Clone the repository**:
-   ```sh
-   git clone https://github.com/pathum-sanjaya/design-link-express.git
-   ```
-
-2. **Navigate to the project directory**:
-   ```sh
-   cd design-link-express
-   ```
-
-3. **Install dependencies**:
-   ```sh
-   npm install
-   ```
-
-4. **Start the development server**:
-   ```sh
-   npm run dev
-   ```
-
----
 
 ## 🤝 Connect With Me
 
